@@ -1,0 +1,15 @@
+{
+  "name": "project-node-rest",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "(https://github.com/PhilipRamkeerat/project-node-rest.git)"
+  },
+  "author": "Philip Ramkeerat",
+  "license": "ISC"
+}
