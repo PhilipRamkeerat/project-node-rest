@@ -58,11 +58,28 @@ class Attendance {
     const sql = `SELECT * FROM Attendances WHERE id=${id}`;
 
     connection.query(sql, (error, response) => {
-      const attendance = response[0]
+      const attendance = response[0];
       if (error) {
         res.status(400).json(error);
       } else {
         res.status(200).json(attendance);
+      }
+    });
+  }
+
+  alter(id, values, res) {
+    if (values.dateCurrent) {
+      values.dateCurrent = moment(values.dateCurrent, "DD/MM/YYYY").format(
+        "YYYY-MM-DD HH:MM:SS"
+      );
+    }
+    const sql = "UPDATE Attendances SET ? WHERE id=?";
+
+    connection.query(sql, [values, id], (error, response) => {
+      if (error) {
+        res.status(400).json(error);
+      } else {
+        res.status(200).json(response);
       }
     });
   }
