@@ -41,6 +41,31 @@ class Attendance {
       });
     }
   }
+
+  list(res) {
+    const sql = "SELECT * FROM Attendances";
+
+    connection.query(sql, (error, response) => {
+      if (error) {
+        res.status(400).json(error);
+      } else {
+        res.status(200).json(response);
+      }
+    });
+  }
+
+  findById(id, res) {
+    const sql = `SELECT * FROM Attendances WHERE id=${id}`;
+
+    connection.query(sql, (error, response) => {
+      const attendance = response[0]
+      if (error) {
+        res.status(400).json(error);
+      } else {
+        res.status(200).json(attendance);
+      }
+    });
+  }
 }
 
 module.exports = new Attendance();
